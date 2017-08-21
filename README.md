@@ -45,3 +45,5 @@ To run local copy in production mode, execute:
 `gulp serve:dist`
 
 This command will create a folder named 'release' in root folder of the project. It is a basic HTML application.
+
+### How to deploy built HTML application using Heroku
