@@ -22,7 +22,7 @@ Then user can get a full list of results according to the parameters they reques
 ### How to clone repository and install dependencies
 
 You will need to clone source code of ensembl-ui repository. To do this open console and execute following lines:
-https://github.com/chanakaDe/ensembl-ui.git
+`git clone https://github.com/chanakaDe/ensembl-ui.git`
 
 After repository is cloned, go inside of repository directory and install dependencies there:
 
