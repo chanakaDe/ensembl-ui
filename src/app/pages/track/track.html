@@ -1,0 +1,81 @@
+<div class="widgets">
+    <div class="row" ba-panel id="allCustomers">
+        <div class="horizontal-scroll">
+            <!--Adding modal-->
+            <form>
+                <div class="row">
+                    <div class="col-lg-4">
+                        <div class="form-group">
+                            <label for="freeText">Free Text Search</label>
+                            <input type="text" ng-model="track.text" class="form-control" id="freeText"
+                                   placeholder="Enter key word you need to find">
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="form-group">
+                            <label for="species">Species</label>
+                            <input type="text" ng-model="track.species" class="form-control" id="species"
+                                   placeholder="Enter Species">
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="form-group">
+                            <label for="type">Track Type</label>
+                            <input type="text" ng-model="track.type" class="form-control" id="type"
+                                   placeholder="Enter Track Type">
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-4">
+                        <div class="form-group">
+                            <label for="release">Release Version</label>
+                            <input type="text" ng-model="track.release" class="form-control" id="release"
+                                   placeholder="Enter Release Version">
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="form-group">
+                            <label for="division">Release Division</label>
+                            <input type="text" ng-model="track.division" class="form-control" id="division"
+                                   placeholder="Enter Release Division">
+                        </div>
+                    </div>
+                </div>
+
+                <button type="submit" ng-click="findTracks()" class="btn btn-success">Search Tracks</button>
+            </form>
+            <hr>
+
+            <div ng-repeat="track in allTracks">
+                <div class="panel panel-body">
+                    <h4>{{$index+1}} - {{track.short_name}}</h4>
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <h5>Track Type : {{track.track_type}}</h5>
+                            <h5>Genome Assembly : {{track.genome_assembly}}</h5>
+                            <h5>Release Division : {{track.release_version}}</h5>
+                            <h5>Location Object Type : {{track.location_object_type}}</h5>
+                            <h5>Location DB Type : {{track.location_dbtype}}</h5>
+                        </div>
+                        <div class="col-lg-6">
+                            <h5>Genome Species : {{track.genome_species}}</h5>
+                            <h5>Release Division : {{track.release_division}}</h5>
+                            <h5>Location Type : {{track.location_type}}</h5>
+                            <h5>Location Species : {{track.location_species}}</h5>
+                        </div>
+                    </div>
+                    <!--<p ng-bind-html="track.description | unsafe"></p>-->
+                    <p style="display: none" id="full_description{{$index}}">{{track.description}}
+                        <a style="cursor: pointer" ng-click="collapseDescription($index)">View Less</a>
+                    </p>
+                    <p id="cropped_description{{$index}}">{{ track.description | limitTo: 200
+                        }}{{track.description.length > 200 ? '...' : ''}}
+                        <a style="cursor: pointer" ng-if="track.description.length > 200"
+                           ng-click="expandDescription($index)">View More</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
