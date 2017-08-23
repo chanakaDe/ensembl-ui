@@ -55,14 +55,16 @@ Change the `var mainHost = "https://ensembl-elastic-rest.herokuapp.com/api/elast
 ### Running local copy
 
 To run local copy in development mode, execute:
-
-`gulp serve`
+```
+gulp serve
+```
 
 This script should automatically open template in your default browser.
 
 To run local copy in production mode, execute:
-
-`gulp serve:dist`
+```
+gulp serve:dist
+```
 
 This command will create a folder named 'release' in root folder of the project. It is a basic HTML application.
 
