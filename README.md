@@ -43,10 +43,12 @@ This will setup a working copy of ensembl-ui on your local machine
 
 This is the front end of the main application part. This application can be configure with other REST APIs to get data.
 To change the application main data source url, go to the following link:
+
 https://github.com/chanakaDe/ensembl-ui/blob/master/src/app/url.js
+
 You can see `url.js` file is there.
 
-Change the `var mainHost = "https://ensembl-elastic-rest.herokuapp.com//api/elastic-test/master/";` location according to the new data source need to be intergrated.
+Change the `var mainHost = "https://ensembl-elastic-rest.herokuapp.com/api/elastic-test/master/";` location according to the new data source need to be intergrated.
 
 ### Running local copy
 
