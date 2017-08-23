@@ -24,6 +24,13 @@ Then user can get a full list of results according to the parameters they reques
 You will need to clone source code of ensembl-ui repository. To do this open console and execute following lines:
 `git clone https://github.com/chanakaDe/ensembl-ui.git`
 
+#### To install bower dependencies and also gulp , first you need to install these 2 packages first.
+
+```
+npm install -g bower
+npm install -g gulp
+```
+
 After repository is cloned, go inside of repository directory and install dependencies there:
 
 `cd ensembl-ui`
@@ -31,6 +38,15 @@ After repository is cloned, go inside of repository directory and install depend
 `npm install`
 
 This will setup a working copy of ensembl-ui on your local machine
+
+### How to change the data source URL via the application ?
+
+This is the front end of the main application part. This application can be configure with other REST APIs to get data.
+To change the application main data source url, go to the following link:
+https://github.com/chanakaDe/ensembl-ui/blob/master/src/app/url.js
+You can see `url.js` file is there.
+
+Change the `var mainHost = "https://ensembl-elastic-rest.herokuapp.com//api/elastic-test/master/";` location according to the new data source need to be intergrated.
 
 ### Running local copy
 
@@ -50,61 +66,27 @@ This command will create a folder named 'release' in root folder of the project.
 
 Heroku doesn't support static web site deployment. So we have to deploy our HTML application as a PHP application. We can do that using only 1 PHP file. To deploy our application using Heroku, we need Github also.
 
-Copy built version(release folder) and make a new HTML project out of it. Now you have a pire HTML application. Now we need to instergrate Git into it.
+Copy built version(release folder) and make a new HTML project out of it. Now you have a pire HTML application. Now we need to instergrate Git into it and deply into Heroku.
 
-Go to root directory and use `git init.`
-Here your initial repository is created.
-Then you will give following commands:
-
-`git add .`
-
-`git commit –m “Your Message”`
-
-Now you need to push your project to github repository. In order to do so, you need to create a new Github project for your new HTML application.
-
-After creating the new repository for the application, use following commands:
-
-`git remote add origin “add github repository url without quotes”`
-
-`git push -u origin master`
-
-Now you need to use Heroku functions to add this application to Heroku. In order to do so, you need to execute following commands:
-
-`heroku login`
-
-You need to enter your Heroku username and password.
-
-Now go to your root directory of your working repository in command prompt and write:
-
-`touch composer.json`
-
-composer.json basically helps heroku to understand that the project or any website you are deploying is a php project. So in short the composer.json is just the indicator. After making composer.json file you will open that json file on notepad and just type:
-
-`{}`
-
-After this Now type:
-
-`touch index.php`
-
-#### Now you need to rename your index.html file to home.html in order to use as a PHP application.
-
-Now opne index.php file and add following code there.
-
-`<?php include_once("home.html"); ?>`
-
-#### Make sure to commit and push each and every change you make according to normal git procedure.
+```
+cd release
+echo '{}' > composer.json
+echo '<?php include_once("home.html"); ?>' > index.php
+mv index.html home.html
+git init
+git add .
+git commit -m 'Your message'
+git remote add origin “add github repository url without quotes”
+git push -u origin master
+```
 
 Now use the following commad to create a new application in Heroku:
 
-`heroku create “your app name without quotes”`
-
-So we have just deployed a dummy web app on Heroku and git remote called heroku is also created in the repository.
-But wait not so fast we haven’t pushed the files on the remote Heroku. So now we must write the following command to push the git repository on Heroku.
-
-`git push heroku master`
-
-#### Application is deployed now. Use following command to opne the application on your default browser.
-
-`heroku open`
+```
+heroku create “your app name without quotes”
+git push heroku master
+heroku open
+```
+#### Now the application will opne in your default web brower. Enjoy !!!!
 
 Feel free to report any kind of issues via official issues here.
