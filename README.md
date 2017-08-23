@@ -22,7 +22,9 @@ Then user can get a full list of results according to the parameters they reques
 ### How to clone repository and install dependencies
 
 You will need to clone source code of ensembl-ui repository. To do this open console and execute following lines:
-`git clone https://github.com/chanakaDe/ensembl-ui.git`
+```
+git clone https://github.com/chanakaDe/ensembl-ui.git
+```
 
 #### To install bower dependencies and also gulp , first you need to install these 2 packages first.
 
@@ -32,10 +34,10 @@ npm install -g gulp
 ```
 
 After repository is cloned, go inside of repository directory and install dependencies there:
-
-`cd ensembl-ui`
-
-`npm install`
+```
+cd ensembl-ui
+npm install
+```
 
 This will setup a working copy of ensembl-ui on your local machine
 
