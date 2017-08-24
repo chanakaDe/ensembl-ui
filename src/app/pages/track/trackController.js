@@ -24,30 +24,20 @@
         };
 
         $scope.findTracks = function () {
-            var track = $scope.track;
-            console.log(track);
 
-            //track.text = "Genes";
-            //track.species = "homo_sapiens";
-            //track.type = "gene";
-            //track.release = "89";
-            //track.division = "ensembl";
+            if ($scope.track.text == "") {
+                document.getElementById('freeText').style.background = '#FF7276';
+            } else {
+                document.getElementById('freeText').style.background = '#FFFFFF';
+                var track = $scope.track;
+                console.log(track);
 
-            trackService.getAllTracks(track.text, track.species, track.type, track.release, track.division).then(function (data) {
-                console.log(data);
-                $scope.allTracks = data;
-            });
-        };
+                trackService.getAllTracks(track.text, track.species, track.type, track.release, track.division).then(function (data) {
+                    console.log(data);
+                    $scope.allTracks = data;
+                });
+            }
 
-        $scope.openDataModal = function (ob) {
-            $scope.selectedTrack = ob;
-            console.log(ob);
-            $uibModal.open({
-                animation: true,
-                templateUrl: "app/pages/track/dataModal.html",
-                size: "lg",
-                scope: $scope
-            });
         };
 
         $scope.expandDescription = function (indexNo) {
