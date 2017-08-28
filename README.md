@@ -96,3 +96,43 @@ heroku open
 #### Now the application will opne in your default web brower. Enjoy !!!!
 
 Feel free to report any kind of issues via official issues here.
+
+### Project Customization and Development
+
+This application uses Angular UI Router for navigation.That means to create new page you need to basically configure `ui-router` state. Here's the Angular UI Router official Github repository.
+
+https://github.com/angular-ui/ui-router
+
+Now let's assume you need to create a new HTML page named `track_update.html` in your application. To do so, you need to follow these steps.
+
+1. You need to create `track_update.html` file in your `track` directory. (https://github.com/chanakaDe/ensembl-ui/tree/master/src/app/pages/track)
+2. Then you need to create a controller file. `track_update_controller.js`.
+3. Then you need to configure UI Router for this new HTML page. It's in following file path : https://github.com/chanakaDe/ensembl-ui/blob/master/src/app/pages/track/track.module.js
+
+As an example, please check the following code : 
+```
+function routeConfig($stateProvider) {
+        $stateProvider
+            .state('track', {
+                url: '/track',
+                templateUrl: 'app/pages/track/track.html',
+                controller: 'TrackViewCtrl',
+                title: 'Track',
+                sidebarMeta: {
+                    icon: 'ion-android-home',
+                    order: 0,
+                },
+            }).state('track', {
+            url: '/track_update',
+            templateUrl: 'app/pages/track/track_update.html',
+            controller: 'TrackUpdateControoler',
+            title: 'Track Update',
+            sidebarMeta: {
+                icon: 'ion-android-home',
+                order: 10,
+            },
+        });
+    }
+```
+
+#### You can add any number of new pages using this method. You only need to configure 3 things. HTML file, Javascript controller and Route Configuration.
